@@ -13,14 +13,17 @@ namespace ninel
 {
     public partial class Inactive : Form
     {
-        public Inactive()
+        private string currentUserName;
+        public Inactive(string userName)
         {
             InitializeComponent();
+            currentUserName = userName;
 
-            
+
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            
             dataGridView1.ClearSelection();
             bool itemFound = false;
 
@@ -62,7 +65,7 @@ namespace ninel
             // Create instance if not open
             if (f1 == null)
             {
-                f1 = new Form1();
+                f1 = new Form1(currentUserName);
                 f1.Show();
             }
 
@@ -132,11 +135,11 @@ namespace ninel
                 int selectedIndex = dataGridView1.SelectedRows[0].Index;
 
                 // Update status in DataGridView
-                dataGridView1.Rows[selectedIndex].Cells[12].Value = "0";
+                dataGridView1.Rows[selectedIndex].Cells[12].Value = "1";
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -146,15 +149,17 @@ namespace ninel
                 {
                     if (sheet.Range[i, 11].Value == username)
                     {
-                        sheet.Range[i, 13].Value = "0";
+                        sheet.Range[i, 13].Value = "1";
                         break;
                     }
                 }
+                MyLogs logs = new MyLogs();
+                logs.insertLogs(currentUserName, "Deleted an inactive user");
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
 
-                MessageBox.Show("Deleted. Status marked as '0'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User activated. Status marked as '1'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

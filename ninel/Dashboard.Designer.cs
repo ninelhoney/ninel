@@ -155,6 +155,7 @@
             this.sidepanel.Name = "sidepanel";
             this.sidepanel.Size = new System.Drawing.Size(246, 753);
             this.sidepanel.TabIndex = 0;
+            this.sidepanel.Paint += new System.Windows.Forms.PaintEventHandler(this.sidepanel_Paint);
             // 
             // button1
             // 

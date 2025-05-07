@@ -33,6 +33,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnDELETE = new System.Windows.Forms.Button();
+            this.btnADD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,12 +82,26 @@
             this.btnDELETE.UseVisualStyleBackColor = false;
             this.btnDELETE.Click += new System.EventHandler(this.btnDELETE_Click);
             // 
+            // btnADD
+            // 
+            this.btnADD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnADD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnADD.ForeColor = System.Drawing.Color.Blue;
+            this.btnADD.Location = new System.Drawing.Point(32, 477);
+            this.btnADD.Name = "btnADD";
+            this.btnADD.Size = new System.Drawing.Size(216, 26);
+            this.btnADD.TabIndex = 9;
+            this.btnADD.Text = "ADD";
+            this.btnADD.UseVisualStyleBackColor = false;
+            this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
+            // 
             // Active
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(807, 757);
+            this.Controls.Add(this.btnADD);
             this.Controls.Add(this.btnDELETE);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -106,5 +121,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnDELETE;
+        private System.Windows.Forms.Button btnADD;
     }
 }

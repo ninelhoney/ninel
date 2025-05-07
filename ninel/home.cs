@@ -174,6 +174,91 @@ namespace ninel
 
         private void home_Load(object sender, EventArgs e)
         {
+           
+
+            // Load the Excel file
+            Workbook book = new Workbook();
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            Worksheet sh = book.Worksheets[0];
+
+            // Count active and inactive students
+            int activeStudentCount = 0;
+            int inactiveStudentCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                string status = sh.Range[i, 13].Value?.ToString().Trim();
+                if (status == "1") activeStudentCount++;
+                else if (status == "0") inactiveStudentCount++;
+            }
+            lblActive.Text = activeStudentCount.ToString();
+            lblInactive.Text = inactiveStudentCount.ToString();
+
+            // Count the male students
+            int maleGenderCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                if (sh.Range[i, 2].Value.ToString() == "Male")
+                {
+                    maleGenderCount++;
+                    lblMale.Text = maleGenderCount.ToString();
+                }
+            }
+
+            // Count the female students
+            int femaleGenderCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                if (sh.Range[i, 2].Value.ToString() == "Female")
+                {
+                    femaleGenderCount++;
+                    lblFemale.Text = femaleGenderCount.ToString();
+                }
+            }
+
+            // Count hobbies
+            int dancingHobbiesCount = 0;
+            int singingHobbiesCount = 0;
+            int readingHobbiesCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                string hobby = sh.Range[i, 3].Value.ToString();
+                if (hobby == "Dancing") dancingHobbiesCount++;
+                if (hobby == "Singing") singingHobbiesCount++;
+                if (hobby == "Reading") readingHobbiesCount++;
+            }
+            lblDancing.Text = dancingHobbiesCount.ToString();
+            lblSinging.Text = singingHobbiesCount.ToString();
+            lblReading.Text = readingHobbiesCount.ToString();
+
+            // Count favorite colors
+            int pinkColorCount = 0;
+            int blackColorCount = 0;
+            int whiteColorCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                string color = sh.Range[i, 5].Value.ToString();
+                if (color == "Pink") pinkColorCount++;
+                if (color == "Black") blackColorCount++;
+                if (color == "White") whiteColorCount++;
+            }
+            lblPink.Text = pinkColorCount.ToString();
+            lblBlack.Text = blackColorCount.ToString();
+            lblWhite.Text = whiteColorCount.ToString();
+
+            // Count courses
+            int bsitCourseCount = 0;
+            int bsedCourseCount = 0;
+            int bsbaCourseCount = 0;
+            for (int i = 2; i <= sh.LastRow; i++)
+            {
+                string course = sh.Range[i, 9].Value.ToString();
+                if (course == "BSIT") bsitCourseCount++;
+                if (course == "BSED") bsedCourseCount++;
+                if (course == "BSBA") bsbaCourseCount++;
+            }
+            lblBSIT.Text = bsitCourseCount.ToString();
+            lblBSED.Text = bsedCourseCount.ToString();
+            lblBSBA.Text = bsbaCourseCount.ToString();
 
         }
     }

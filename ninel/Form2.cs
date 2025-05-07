@@ -13,16 +13,21 @@ using System.Xml.Linq;
 namespace ninel
 {
     public partial class Form2 : Form
+
     {
-        public Form2()
+        
+        private string currentUserName;
+        Logs logs = new Logs();
+        public Form2(string userName)
         {
             InitializeComponent();
             LoadExcelFile();
+            currentUserName = userName;
         }
         public void LoadExcelFile()
         {
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
             DataTable dt = sheet.ExportDataTable();
             dataGridView1.DataSource = dt;
@@ -89,7 +94,7 @@ namespace ninel
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -103,9 +108,11 @@ namespace ninel
                         break;
                     }
                 }
+                MyLogs logs = new MyLogs();
+                logs.insertLogs(currentUserName, "Deleted an active student");
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
 
                 MessageBox.Show("Deleted. Status marked as '0'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -124,7 +131,7 @@ namespace ninel
             // Create instance if not open
             if (f1 == null)
             {
-                f1 = new Form1();
+                f1 = new Form1(currentUserName);
                 f1.Show();
             }
 
@@ -227,7 +234,7 @@ namespace ninel
             this.Close();
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

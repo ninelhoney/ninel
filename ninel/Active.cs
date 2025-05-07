@@ -8,14 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ninel
 {
     public partial class Active : Form
     {
-        public Active()
+        private string currentUserName;
+        public Active(string userName)
         {
-            InitializeComponent();   
+            InitializeComponent();
+            currentUserName = userName;
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -57,13 +61,6 @@ namespace ninel
 
             // Check if Form1 is already open
             Form1 f1 = Application.OpenForms["Form1"] as Form1;
-
-            // Create instance if not open
-            if (f1 == null)
-            {
-                f1 = new Form1();
-                f1.Show();
-            }
 
             // Populate Form2 with the data from the selected row in Form1's DataGridView
             if (dataGridView1.Rows[r].Cells[0].Value != null)
@@ -135,7 +132,7 @@ namespace ninel
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -149,9 +146,11 @@ namespace ninel
                         break;
                     }
                 }
+                MyLogs logs = new MyLogs();
+                logs.insertLogs(currentUserName, "Deleted an active student");
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
 
                 MessageBox.Show("Deleted. Status marked as '0'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -159,6 +158,14 @@ namespace ninel
             {
                 MessageBox.Show("Please select a row to delete.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnADD_Click(object sender, EventArgs e)
+        {
+            //add form
+
+            Form1 form1 = new Form1(currentUserName); 
+            form1.Show();
         }
     }
 }

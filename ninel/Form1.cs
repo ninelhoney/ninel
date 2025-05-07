@@ -23,9 +23,12 @@ namespace ninel
         string[] student = new string[5];
         int i = 0;
 
-        public Form1()
+        private string currentUserName;
+
+        public Form1(string userName)
         {
             InitializeComponent();
+            currentUserName = userName;
         }
 
         private void btnADD_Click(object sender, EventArgs e)
@@ -134,7 +137,7 @@ namespace ninel
                 txtProfilePicture.Focus(); return;
             }
             Workbook checkBook = new Workbook();
-            checkBook.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            checkBook.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet checkSheet = checkBook.Worksheets[0];
 
             for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
@@ -151,12 +154,12 @@ namespace ninel
             }
 
             // Insert to form2 if needed
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2(currentUserName);
             form2.insertData(name, gender, hobbies, favcolor, address, email, birthdate, age, course, saying, username, password, "1", profilePicture);
 
             // Save to Excel
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
             int r = sh.LastRow + 1;
 
@@ -175,9 +178,12 @@ namespace ninel
             sh.Range[r, 13].Value = "1"; // active flag
             sh.Range[r, 14].Value = profilePicture; // picture path
 
-            book.SaveToFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show("Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            MyLogs logs = new MyLogs();
+            logs.insertLogs(currentUserName, $"Added new user: {name}");
 
             // Reset form
             btnADD.Visible = true;
@@ -202,7 +208,7 @@ namespace ninel
         {
             if (form2 == null || form2.IsDisposed)
             {
-                form2 = new Form2();
+                Form2 form2 = new Form2(currentUserName);
             }
             form2.Show();
             form2.BringToFront();
@@ -268,7 +274,7 @@ namespace ninel
             if (string.IsNullOrEmpty(profilePicture)) { MessageBox.Show("Please browse and select a profile picture.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtProfilePicture.Focus(); return; }
 
             Workbook checkBook = new Workbook();
-            checkBook.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            checkBook.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet checkSheet = checkBook.Worksheets[0];
 
             for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
@@ -286,7 +292,7 @@ namespace ninel
 
             // Load the Excel file to update
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             // Search for the existing row based on username (assuming it's in column 11)
@@ -310,6 +316,9 @@ namespace ninel
                     sh.Range[i, 12].Value = password;
                     sh.Range[i, 13].Value = "1"; // active flag
                     sh.Range[i, 14].Value = profilePicture; // Profile picture path
+
+                    MyLogs logs = new MyLogs();
+                    logs.insertLogs(currentUserName, "Updated a student");
 
                     isUpdated = true;
                     break;
@@ -337,7 +346,7 @@ namespace ninel
             }
 
             // Save changes to Excel
-            book.SaveToFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show(isUpdated ? "Successfully updated!" : "Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

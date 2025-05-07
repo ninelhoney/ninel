@@ -34,7 +34,6 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.lblSignUp = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -98,19 +97,6 @@
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // lblSignUp
-            // 
-            this.lblSignUp.AutoSize = true;
-            this.lblSignUp.BackColor = System.Drawing.Color.Transparent;
-            this.lblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSignUp.ForeColor = System.Drawing.Color.White;
-            this.lblSignUp.Location = new System.Drawing.Point(579, 565);
-            this.lblSignUp.Name = "lblSignUp";
-            this.lblSignUp.Size = new System.Drawing.Size(68, 15);
-            this.lblSignUp.TabIndex = 15;
-            this.lblSignUp.Text = "Add here!";
-            this.lblSignUp.Click += new System.EventHandler(this.lblSignUp_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -131,7 +117,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1049, 753);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblSignUp);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
@@ -153,7 +138,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label lblSignUp;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

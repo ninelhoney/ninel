@@ -16,6 +16,7 @@ namespace ninel
 
     {   
         MyLogs logs = new MyLogs();
+       
         public Login()
         {
             InitializeComponent();    
@@ -36,7 +37,7 @@ namespace ninel
         {
             //load excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\Downloads\\newwwww\\ninel(V2)\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
             bool loginSuccess = false;
 
@@ -63,12 +64,15 @@ namespace ninel
                     MessageBox.Show("Login successful", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
 
+                    logs.insertLogs(storedUsername, "Successfully logged in!");
+
                     Dashboard dashboard = new Dashboard(name, profilePath);
                     dashboard.ShowDialog();
                     loginSuccess = true;
                     this.Close();
                     break;
                 }
+
             }
 
             if (!loginSuccess)
@@ -93,17 +97,11 @@ namespace ninel
             }
         }
 
-        //show add form
-        private void lblSignUp_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
-         
-        }
         //close
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }
