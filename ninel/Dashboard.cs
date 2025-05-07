@@ -218,6 +218,7 @@ namespace ninel
         private void button1_Click(object sender, EventArgs e)
         {
             loadform(new home());
+            //test
         }
         private void btnActive_Click(object sender, EventArgs e)
         {
