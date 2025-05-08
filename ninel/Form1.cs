@@ -137,7 +137,7 @@ namespace ninel
                 txtProfilePicture.Focus(); return;
             }
             Workbook checkBook = new Workbook();
-            checkBook.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            checkBook.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet checkSheet = checkBook.Worksheets[0];
 
             for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
@@ -159,7 +159,7 @@ namespace ninel
 
             // Save to Excel
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
             int r = sh.LastRow + 1;
 
@@ -178,7 +178,7 @@ namespace ninel
             sh.Range[r, 13].Value = "1"; // active flag
             sh.Range[r, 14].Value = profilePicture; // picture path
 
-            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show("Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -216,6 +216,7 @@ namespace ninel
 
         private void btnUPDATE_Click(object sender, EventArgs e)
         {
+            
             string name = txtName.Text.Trim();
             string gender = "";
             string hobbies = "";
@@ -273,26 +274,26 @@ namespace ninel
             if (string.IsNullOrEmpty(password)) { MessageBox.Show("Password cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtPassword.Focus(); return; }
             if (string.IsNullOrEmpty(profilePicture)) { MessageBox.Show("Please browse and select a profile picture.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtProfilePicture.Focus(); return; }
 
-            Workbook checkBook = new Workbook();
-            checkBook.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
-            Worksheet checkSheet = checkBook.Worksheets[0];
+            //Workbook checkBook = new Workbook();
+            //checkBook.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            //Worksheet checkSheet = checkBook.Worksheets[0];
 
-            for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
-            {
-                string existingUsername = checkSheet.Range[i, 11].Value?.Trim();
-                string existingPassword = checkSheet.Range[i, 12].Value?.Trim();
+            //for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
+            //{
+            //    string existingUsername = checkSheet.Range[i, 11].Value?.Trim();
+            //    string existingPassword = checkSheet.Range[i, 12].Value?.Trim();
 
-                if (string.Equals(existingUsername, username, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(existingPassword, password, StringComparison.OrdinalIgnoreCase))
-                {
-                    MessageBox.Show("A user with the same username and password already exists.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
+            //    if (string.Equals(existingUsername, username, StringComparison.OrdinalIgnoreCase) &&
+            //        string.Equals(existingPassword, password, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        MessageBox.Show("A user with the same username and password already exists.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //}
 
             // Load the Excel file to update
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             // Search for the existing row based on username (assuming it's in column 11)
@@ -346,7 +347,7 @@ namespace ninel
             }
 
             // Save changes to Excel
-            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show(isUpdated ? "Successfully updated!" : "Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

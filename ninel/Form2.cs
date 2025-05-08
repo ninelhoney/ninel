@@ -27,7 +27,7 @@ namespace ninel
         public void LoadExcelFile()
         {
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
             DataTable dt = sheet.ExportDataTable();
             dataGridView1.DataSource = dt;
@@ -94,7 +94,7 @@ namespace ninel
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -112,7 +112,7 @@ namespace ninel
                 logs.insertLogs(currentUserName, "Deleted an active student");
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
 
                 MessageBox.Show("Deleted. Status marked as '0'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -123,76 +123,53 @@ namespace ninel
         }
         private void dataGridView1_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int r = dataGridView1.CurrentCell.RowIndex;
+            int r = dataGridView1.CurrentCell?.RowIndex ?? -1;
+            if (r < 0 || r >= dataGridView1.Rows.Count) return;
 
-            // Check if Form1 is already open
             Form1 f1 = Application.OpenForms["Form1"] as Form1;
 
-            // Create instance if not open
             if (f1 == null)
             {
+                if (string.IsNullOrEmpty(currentUserName)) return;
                 f1 = new Form1(currentUserName);
                 f1.Show();
             }
 
-            // Populate Form2 with the data from the selected row in Form1's DataGridView
-            if (dataGridView1.Rows[r].Cells[0].Value != null)
-                f1.txtName.Text = dataGridView1.Rows[r].Cells[0].Value.ToString();
+            // Check each cell and assign safely
+            var cells = dataGridView1.Rows[r].Cells;
 
-            // Gender
-            string gender = dataGridView1.Rows[r].Cells[1].Value.ToString();
+            f1.txtName.Text = cells[0]?.Value?.ToString() ?? "";
+
+            string gender = cells[1]?.Value?.ToString() ?? "";
             f1.radMale.Checked = gender == "Male";
             f1.radFemale.Checked = gender == "Female";
 
-            // Hobbies
-            string hobbies = dataGridView1.Rows[r].Cells[2].Value.ToString();
+            string hobbies = cells[2]?.Value?.ToString() ?? "";
             string[] h = hobbies.Split(',');
             f1.cbDancing.Checked = h.Contains("Dancing");
             f1.cbSinging.Checked = h.Contains("Singing");
             f1.cbReading.Checked = h.Contains("Reading");
 
-            // Address
-            f1.txtAddress.Text = dataGridView1.Rows[r].Cells[3].Value.ToString();
+            f1.txtAddress.Text = cells[3]?.Value?.ToString() ?? "";
+            f1.cbFavoriteColor.SelectedItem = cells[4]?.Value?.ToString() ?? "";
+            f1.txtEmail.Text = cells[5]?.Value?.ToString() ?? "";
 
-            // Favorite Color
-            f1.cbFavoriteColor.SelectedItem = dataGridView1.Rows[r].Cells[4].Value.ToString();
+            string birthdate = cells[6]?.Value?.ToString();
+            f1.dtBirthdate.Value = DateTime.TryParse(birthdate, out DateTime dob) ? dob : DateTime.Now;
 
-            // Email
-            f1.txtEmail.Text = dataGridView1.Rows[r].Cells[5].Value.ToString();
+            f1.txtAge.Text = cells[7]?.Value?.ToString() ?? "";
+            f1.cbCourse.SelectedItem = cells[8]?.Value?.ToString() ?? "";
+            f1.txtSaying.Text = cells[9]?.Value?.ToString() ?? "";
+            f1.txtUsername.Text = cells[10]?.Value?.ToString() ?? "";
+            f1.txtPassword.Text = cells[11]?.Value?.ToString() ?? "";
 
-            // Birthdate
-            f1.dtBirthdate.Value = DateTime.TryParse(dataGridView1.Rows[r].Cells[6].Value.ToString(), out DateTime dob) ? dob : DateTime.Now;
+            string picPath = cells[13]?.Value?.ToString() ?? "";
+            f1.txtProfilePicture.Text = System.IO.File.Exists(picPath) ? picPath : "";
 
-            // Age
-            f1.txtAge.Text = dataGridView1.Rows[r].Cells[7].Value.ToString();
-
-            // Course
-            f1.cbCourse.SelectedItem = dataGridView1.Rows[r].Cells[8].Value.ToString();
-
-            // Saying
-            f1.txtSaying.Text = dataGridView1.Rows[r].Cells[9].Value.ToString();
-
-            // Username
-            f1.txtUsername.Text = dataGridView1.Rows[r].Cells[10].Value.ToString();
-
-            // Password
-            f1.txtPassword.Text = dataGridView1.Rows[r].Cells[11].Value.ToString();
-
-            // Profile Picture
-            string picPath = dataGridView1.Rows[r].Cells[13].Value.ToString();
-            if (System.IO.File.Exists(picPath))
-            {
-                f1.txtProfilePicture.Text = picPath; 
-            }
-            else
-            {
-                f1.txtProfilePicture.Text = "";
-            }
-
-            // Hide ADD button, show UPDATE button
             f1.btnADD.Visible = false;
             f1.btnUPDATE.Visible = true;
         }
+        
 
         private void btnSearch_Click_1(object sender, EventArgs e)
         {

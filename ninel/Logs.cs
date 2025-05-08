@@ -24,12 +24,12 @@ namespace ninel
         {
 
             
-            dataGridView1.ClearSelection();
+            dataGridView2.ClearSelection();
             bool itemFound = false;
 
             try
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dataGridView2.Rows)
                 {
                     // Skip new row placeholder in DataGridView
                     if (row.IsNewRow) continue;
@@ -38,7 +38,7 @@ namespace ninel
                         row.Cells[0].Value.ToString().Equals(txtSearch.Text.Trim(), StringComparison.OrdinalIgnoreCase))
                     {
                         row.Selected = true;
-                        dataGridView1.FirstDisplayedScrollingRowIndex = row.Index; // Scroll to the selected row
+                        dataGridView2.FirstDisplayedScrollingRowIndex = row.Index; // Scroll to the selected row
                         itemFound = true;
                         break;
                     }
