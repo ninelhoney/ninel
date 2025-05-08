@@ -21,7 +21,7 @@ namespace ninel
            
             // Load the Excel file to count active students
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             int activeStudentCount = 0;
@@ -178,7 +178,7 @@ namespace ninel
 
             // Load the Excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             // Count active and inactive students

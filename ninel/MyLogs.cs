@@ -17,7 +17,7 @@ namespace ninel
         {
             //logs
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[1];
             int r = sh.LastRow + 1;
 
@@ -26,7 +26,7 @@ namespace ninel
             sh.Range[r, 3].Value = DateTime.Now.ToString("MM/dd/yyyy");
             sh.Range[r, 4].Value = DateTime.Now.ToString("hh:mm:ss tt");
 
-            book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
 
         }
     }

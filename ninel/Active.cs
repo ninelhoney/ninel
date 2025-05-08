@@ -31,16 +31,19 @@ namespace ninel
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    // Skip new row placeholder in DataGridView
+                    // Skip new row placeholder
                     if (row.IsNewRow) continue;
 
                     if (row.Cells[0].Value != null &&
-                        row.Cells[0].Value.ToString().Equals(txtSearch.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                        row.Cells[0].Value.ToString().IndexOf(txtSearch.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         row.Selected = true;
-                        dataGridView1.FirstDisplayedScrollingRowIndex = row.Index; // Scroll to the selected row
+                        // Optional: Scroll to the first match only
+                        if (!itemFound)
+                        {
+                            dataGridView1.FirstDisplayedScrollingRowIndex = row.Index;
+                        }
                         itemFound = true;
-                        break;
                     }
                 }
 
@@ -116,7 +119,7 @@ namespace ninel
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -130,13 +133,15 @@ namespace ninel
                         break;
                     }
                 }
-                MyLogs logs = new MyLogs();
-                logs.insertLogs(currentUserName, "Deleted an active student");
+             
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
 
                 MessageBox.Show("Deleted. Status marked as '0'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MyLogs logs = new MyLogs();
+                logs.insertLogs(currentUserName, "Deleted an active student");
             }
             else
             {

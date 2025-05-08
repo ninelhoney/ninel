@@ -37,7 +37,7 @@ namespace ninel
         {
             //load excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
             bool loginSuccess = false;
 

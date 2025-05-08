@@ -22,8 +22,7 @@ namespace ninel
        
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
-            
+            //i removed the break 
             dataGridView2.ClearSelection();
             bool itemFound = false;
 
@@ -31,16 +30,19 @@ namespace ninel
             {
                 foreach (DataGridViewRow row in dataGridView2.Rows)
                 {
-                    // Skip new row placeholder in DataGridView
+                    // Skip new row placeholder
                     if (row.IsNewRow) continue;
 
                     if (row.Cells[0].Value != null &&
-                        row.Cells[0].Value.ToString().Equals(txtSearch.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                        row.Cells[0].Value.ToString().IndexOf(txtSearch.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         row.Selected = true;
-                        dataGridView2.FirstDisplayedScrollingRowIndex = row.Index; // Scroll to the selected row
+                        // Optional: Scroll to the first match only
+                        if (!itemFound)
+                        {
+                            dataGridView2.FirstDisplayedScrollingRowIndex = row.Index;
+                        }
                         itemFound = true;
-                        break;
                     }
                 }
 
@@ -53,7 +55,6 @@ namespace ninel
             {
                 MessageBox.Show($"An error occurred during search: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }
