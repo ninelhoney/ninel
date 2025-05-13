@@ -141,7 +141,7 @@ namespace ninel
 
                 // Load the Excel file
                 Workbook book = new Workbook();
-                book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+                book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
                 Worksheet sheet = book.Worksheets[0];
 
 
@@ -158,7 +158,7 @@ namespace ninel
                 
 
                 // Save changes
-                book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+                book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
 
                 MessageBox.Show("User activated. Status marked as '1'", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

@@ -137,7 +137,7 @@ namespace ninel
                 txtProfilePicture.Focus(); return;
             }
             Workbook checkBook = new Workbook();
-            checkBook.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            checkBook.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet checkSheet = checkBook.Worksheets[0];
 
             for (int i = 2; i <= checkSheet.LastRow; i++) // skip header
@@ -159,7 +159,7 @@ namespace ninel
 
             // Save to Excel
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
             int r = sh.LastRow + 1;
 
@@ -178,7 +178,7 @@ namespace ninel
             sh.Range[r, 13].Value = "1"; // active flag
             sh.Range[r, 14].Value = profilePicture; // picture path
 
-            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show("Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -293,7 +293,7 @@ namespace ninel
 
             // Load the Excel file to update
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             
@@ -352,7 +352,7 @@ namespace ninel
             }
 
             // Save changes to Excel
-            book.SaveToFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
+            book.SaveToFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx", ExcelVersion.Version2016);
 
             MessageBox.Show(isUpdated ? "Successfully updated!" : "Successfully added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             

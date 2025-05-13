@@ -25,7 +25,7 @@ namespace ninel
 
             // Load the Excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             // Retrieve the username 
@@ -168,7 +168,7 @@ namespace ninel
 
             // Load the Excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sh = book.Worksheets[0];
 
             // Count active and inactive students
@@ -260,7 +260,7 @@ namespace ninel
 
             // Load Excel data
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
 
             // Export and filter data
@@ -286,7 +286,7 @@ namespace ninel
 
             // Load Excel data
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[0];
 
             // Export and filter data
@@ -313,7 +313,7 @@ namespace ninel
 
             // Load Excel file
             Workbook book = new Workbook();
-            book.LoadFromFile("C:\\Users\\ninel\\source\\repos\\ninel\\Book1.xlsx");
+            book.LoadFromFile("C:\\Users\\ACT-STUDENT\\source\\repos\\ninel\\Book1.xlsx");
             Worksheet sheet = book.Worksheets[1]; // Sheet2 for logs
 
             // Export and filter data
