@@ -156,5 +156,10 @@ namespace ninel
             Form1 form1 = new Form1(currentUserName); 
             form1.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

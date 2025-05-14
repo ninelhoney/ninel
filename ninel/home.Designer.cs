@@ -235,7 +235,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "home";
             this.Text = "i";
-            this.Load += new System.EventHandler(this.home_Load);
+            //this.Load += new System.EventHandler(this.home_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

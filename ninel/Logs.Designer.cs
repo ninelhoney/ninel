@@ -37,18 +37,21 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(32, 220);
+            this.dataGridView2.Location = new System.Drawing.Point(69, 190);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(743, 233);
+            this.dataGridView2.Size = new System.Drawing.Size(672, 433);
             this.dataGridView2.TabIndex = 3;
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(700, 169);
+            this.btnSearch.Location = new System.Drawing.Point(666, 142);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 24);
             this.btnSearch.TabIndex = 7;
@@ -58,7 +61,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(452, 168);
+            this.txtSearch.Location = new System.Drawing.Point(418, 141);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '*';

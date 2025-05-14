@@ -44,7 +44,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(387, 500);
+            this.btnLogin.Location = new System.Drawing.Point(392, 497);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(274, 52);
             this.btnLogin.TabIndex = 12;

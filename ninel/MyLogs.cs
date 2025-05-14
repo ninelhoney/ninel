@@ -11,8 +11,6 @@ namespace ninel
 {
     class MyLogs
     {
-        Workbook book = new Workbook();
-
         public void insertLogs(string user, string message)
         {
             //logs

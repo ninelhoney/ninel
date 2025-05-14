@@ -330,11 +330,5 @@ namespace ninel
 
             loadform(logsForm); 
         }
-    
-
-        private void sidepanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
